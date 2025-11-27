@@ -12,7 +12,7 @@ WITH launches AS (
     END AS instance_type,
     useridentity.arn AS started_by,
     eventtime        AS start_time
-  FROM cloudtrail_log.events
+  FROM cloudtrail_log.events  -- IMPORTANT: Adjust database.table name if yours differs
   WHERE eventsource = 'ec2.amazonaws.com'
     AND eventname   = 'RunInstances'
 
