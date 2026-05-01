@@ -1,6 +1,14 @@
 /*
-This query retrieves the full history of StartInstances and StopInstances events from CloudTrail for the specified EC2 instance IDs.
-It returns every matching event, including timestamp, event type, username, ARN, and source IP address, ordered from newest to oldest.
+DESCRIPTION: EC2 Instance Start and Stop History Query
+
+This query analyzes CloudTrail logs for a specified list of EC2 instance IDs.
+It returns every matching StartInstances and StopInstances event, including when each action happened,
+which action was performed, who performed it, and the source IP address.
+
+Before running:
+- Replace the sample instance IDs in target_instances.
+- Replace the same instance IDs in the requestparameters LIKE filters.
+- Replace cloudtrail_logs.events with your Athena CloudTrail database and table name.
 */
 
 WITH target_instances AS (
