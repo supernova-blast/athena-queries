@@ -1,6 +1,14 @@
 /*
-This query identifies all EC2 RunInstances events for the specified instance types within the defined date range and shows who launched them and when.
-It then joins any corresponding TerminateInstances events to indicate whether and by whom those instances were later terminated.
+DESCRIPTION: EC2 Instance Type Launch and Termination Audit Query
+
+This query analyzes CloudTrail logs for EC2 RunInstances events matching specific instance types
+within a defined time range. It shows which instances were launched, who launched them, when they
+were launched, and whether each instance was later terminated.
+
+Before running:
+- Replace the sample instance types in the CASE statement and requestparameters LIKE filters.
+- Replace the date range in both the launches and terminations CTEs.
+- Replace cloudtrail_log.events with your Athena CloudTrail database and table name.
 */
 
 WITH launches AS (
