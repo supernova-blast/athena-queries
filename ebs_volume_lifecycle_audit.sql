@@ -4,6 +4,10 @@ DESCRIPTION: EBS Volume Forensic Analysis Query
 This query analyzes CloudTrail logs for a specified list of EBS volumes.
 It shows when each volume was created, who created it, when it was attached or detached,
 whether snapshots were created, and provides a basic deletion-safety assessment.
+
+Before running:
+- Replace the sample volume IDs in volume_list.
+- Replace cloudtrail_logs.events with your Athena CloudTrail database and table name.
 */
 
 WITH volume_list AS (
